@@ -17,7 +17,7 @@ pip install -r requirements.txt
 python main.py
 ```
 
-<img src="images/imageLocator.png" width="720">
+<img src="images/imageLocator.png" width="1280">
 
 ## Start label the points
 
