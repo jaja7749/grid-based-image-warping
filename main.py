@@ -9,7 +9,7 @@ from matplotlib import pyplot as plt
 import numpy as np
 import sys
 
-class ImageMarkerApp:
+class ImageLocatorApp:
     def __init__(self, master):
         self.master = master
         self.master.title("Image Locator")
@@ -566,5 +566,5 @@ class ImageMarkerApp:
     
 if __name__ == "__main__":
     root = tk.Tk()
-    app = ImageMarkerApp(root)
+    app = ImageLocatorApp(root)
     root.mainloop()
