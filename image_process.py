@@ -447,6 +447,8 @@ class process:
             #plt.plot([i[1]["original_x0"], i[1]["original_x1"], i[1]["original_x2"], i[1]["original_x3"], i[1]["original_x0"]], [i[1]["original_y0"], i[1]["original_y1"], i[1]["original_y2"], i[1]["original_y3"], i[1]["original_y0"]], c="r", alpha=0.2)
             plt.plot([i[1]["x0_"], i[1]["x1_"], i[1]["x2_"], i[1]["x3_"], i[1]["x0_"]], [i[1]["y0_"], i[1]["y1_"], i[1]["y2_"], i[1]["y3_"], i[1]["y0_"]], c="b", alpha=0.2)
         #plt.show()
+        plt.ylim(np.max(self.region[["y0_", "y1_", "y2_", "y3_"]]), 0)
+        plt.xlim(0, np.max(self.region[["x0_", "x1_", "x2_", "x3_"]]))
         return fig
            
     def fix(self):
