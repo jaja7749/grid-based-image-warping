@@ -5,6 +5,10 @@ And it base on ***Affine*** or ***Project*** Transform and ***Bicubic Interpolat
 
 ## Initial GUI
 
+Select dist/main.exe
+
+Or
+
 Install the package, in terminal:
 
 ```
