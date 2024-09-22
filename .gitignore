@@ -1,5 +1,2 @@
 build/
-dist/
-images/
-*.png
 main.spec
