@@ -403,7 +403,7 @@ class ImageLocatorApp:
 
     def export_to_csv(self):
         """export the coordinates to a CSV file point from "export_button" """
-        file_path = filedialog.asksaveasfilename(defaultextension=".csv", filetypes=[("CSV files", "*.csv")])
+        file_path = filedialog.asksaveasfilename(initialfile = "transfer_file.csv", defaultextension=".csv", filetypes=[("CSV files", "*.csv")])
         if file_path:
             # Prepare the data for export
             data = []
@@ -521,8 +521,8 @@ class ImageLocatorApp:
         
     def save_image(self, before, after):
         """Saves the figure as an image file."""
-        file_path_1 = filedialog.asksaveasfilename(defaultextension=".png", filetypes=[("PNG files", "*.png"), ("JPEG files", "*.jpg"), ("All files", "*.*")])
-        file_path_2 = filedialog.asksaveasfilename(defaultextension=".png", filetypes=[("PNG files", "*.png"), ("JPEG files", "*.jpg"), ("All files", "*.*")])
+        file_path_1 = filedialog.asksaveasfilename(initialfile = "Before_warp.png", defaultextension=".png", filetypes=[("PNG files", "*.png"), ("JPEG files", "*.jpg"), ("All files", "*.*")])
+        file_path_2 = filedialog.asksaveasfilename(initialfile = "After_warp.png", defaultextension=".png", filetypes=[("PNG files", "*.png"), ("JPEG files", "*.jpg"), ("All files", "*.*")])
         if file_path_1 and file_path_2:
             # Save the figure using the selected file path
             image_save1 = Image.fromarray(before)
