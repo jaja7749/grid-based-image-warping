@@ -153,18 +153,18 @@ class process:
         
         # fill the blank and reposition the point
         if after_x_min < before_x_min:
-            scale_region_xy = np.insert(scale_region_xy, [0], np.ones((scale_region_xy.shape[0], np.abs(after_x_min - before_x_min), 3), dtype=np.uint8) * 255, axis=1)
+            scale_region_xy = np.insert(scale_region_xy, [0], np.zeros((scale_region_xy.shape[0], np.abs(after_x_min - before_x_min), 3), dtype=np.uint8), axis=1)
             self.resize_point["after_x"] += np.abs(after_x_min - before_x_min)
         else:
-            original_image = np.insert(original_image, [0], np.ones((original_image.shape[0], np.abs(before_x_min - after_x_min), 3), dtype=np.uint8) * 255, axis=1)
+            original_image = np.insert(original_image, [0], np.zeros((original_image.shape[0], np.abs(before_x_min - after_x_min), 3), dtype=np.uint8), axis=1)
             self.resize_point["before_x"] += np.abs(after_x_min - before_x_min)
             self.grid_x[1:] += np.abs(after_x_min - before_x_min)
         
         if after_y_min < before_y_min:
-            scale_region_xy = np.insert(scale_region_xy, [0], np.ones((np.abs(after_y_min - before_y_min), scale_region_xy.shape[1], 3), dtype=np.uint8) * 255, axis=0)
+            scale_region_xy = np.insert(scale_region_xy, [0], np.zeros((np.abs(after_y_min - before_y_min), scale_region_xy.shape[1], 3), dtype=np.uint8), axis=0)
             self.resize_point["after_y"] += np.abs(after_y_min - before_y_min)
         else:
-            original_image = np.insert(original_image, [0], np.ones((np.abs(before_y_min - after_y_min), original_image.shape[1], 3), dtype=np.uint8) * 255, axis=0)
+            original_image = np.insert(original_image, [0], np.zeros((np.abs(before_y_min - after_y_min), original_image.shape[1], 3), dtype=np.uint8), axis=0)
             self.resize_point["before_y"] += np.abs(after_y_min - before_y_min)
             self.grid_y[1:] += np.abs(after_y_min - before_y_min)
             
@@ -518,16 +518,16 @@ class process:
         new_before = self.image_before.copy()
         new_after = self.new_after.copy()
         if self.local_point_before[0] < self.local_point_after[0]:
-            new_before = np.insert(new_before, [0], np.ones((new_before.shape[0], int(np.abs(self.local_point_after[0] - self.local_point_before[0])), 3), dtype=np.uint8) * 255, axis=1)
+            new_before = np.insert(new_before, [0], np.zeros((new_before.shape[0], int(np.abs(self.local_point_after[0] - self.local_point_before[0])), 3), dtype=np.uint8), axis=1)
             self.local_point_before = (self.local_point_before[0] + int(np.abs(self.local_point_before[0] - self.local_point_after[0])), self.local_point_before[1])
         else:
-            new_after = np.insert(new_after, [0], np.ones((new_after.shape[0], int(np.abs(self.local_point_before[0] - self.local_point_after[0])), 3), dtype=np.uint8) * 255, axis=1)
+            new_after = np.insert(new_after, [0], np.zeros((new_after.shape[0], int(np.abs(self.local_point_before[0] - self.local_point_after[0])), 3), dtype=np.uint8), axis=1)
             self.local_point_after = (self.local_point_after[0] + int(np.abs(self.local_point_after[0] - self.local_point_before[0])), self.local_point_after[1])
         if self.local_point_before[1] < self.local_point_after[1]:
-            new_before = np.insert(new_before, [0], np.ones((int(np.abs(self.local_point_after[1] - self.local_point_before[1])), new_before.shape[1], 3), dtype=np.uint8) * 255, axis=0)
+            new_before = np.insert(new_before, [0], np.zeros((int(np.abs(self.local_point_after[1] - self.local_point_before[1])), new_before.shape[1], 3), dtype=np.uint8), axis=0)
             self.local_point_before = (self.local_point_before[0], self.local_point_before[1] + int(np.abs(self.local_point_before[1] - self.local_point_after[1])))
         else:
-            new_after = np.insert(new_after, [0], np.ones((int(np.abs(self.local_point_before[1] - self.local_point_after[1])), new_after.shape[1], 3), dtype=np.uint8) * 255, axis=0)
+            new_after = np.insert(new_after, [0], np.zeros((int(np.abs(self.local_point_before[1] - self.local_point_after[1])), new_after.shape[1], 3), dtype=np.uint8), axis=0)
             self.local_point_after = (self.local_point_after[0], self.local_point_after[1] + int(np.abs(self.local_point_after[1] - self.local_point_before[1])))
         
         self.new_before = new_before.astype(np.uint8)
